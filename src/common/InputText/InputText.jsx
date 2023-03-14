@@ -11,11 +11,11 @@ export const InputText = ({
     return (
     <>
     <input className="inputTextDesign"
-    type={type}
-    placeholder={placeholder}
-    name={name}
-    changeFunction={changeFunction}
-    validateFunction={validateFunction}
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        onChange={(e) => changeFunction(e)}
+        onBlur={(e) => validateFunction(e)}
     />
     </>
     )

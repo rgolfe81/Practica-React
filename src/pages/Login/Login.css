@@ -9,12 +9,30 @@
 }
 
 .titleDesign{
-    border: 0.2em solid white;
-    border-radius: 0.3em;
+    border-bottom: 0.2em solid rgb(98, 84, 193);
     width: 10em;
     height: 2em;
     margin-bottom: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.buttonDesign{
+    width: 5em;
+    height: 2em;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  rgb(98, 84, 193);
+    color: white;
+    border-radius: 0.3em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buttonDesign:hover{
+    background-color:  rgb(66, 52, 154);
+    transition: 0.3s;
 }
