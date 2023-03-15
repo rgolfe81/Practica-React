@@ -11,31 +11,39 @@ export const Login = () => {
     emailError: "",
     passwordError: "",
   })
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
   const inputHandler = (e) => {
     setCredenciales((preveState => ({...preveState, [e.target.name]: e.target.value,})));
   };
+
   const inputValidate = (e) => {
     switch (e.target.name){
         case "email":
-            let patron = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-            if (patron.test(credenciales.email)) {
-                setCredencialesError((preveState) => ({...preveState,emailError: "",}));
+            const regExpEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (regExpEmail.test(credenciales.email)) {
+                setCredencialesError((preveState) => ({...preveState,emailError: ""}));
+                setIsEmailValid(true);
             } else {
-                setCredencialesError((preveState) => ({...preveState,emailError: "Debes introducir un formato válido de email",}));
+                setCredencialesError((preveState) => ({...preveState,emailError: "Debes introducir un formato válido de email"}));
+                setIsEmailValid(false);
             }
             break;
             
         case "password":
             if (credenciales.password.length < 8) {
-                setCredencialesError((preveState) => ({...preveState,passwordError: "Debes introducir mínimio 8 caracteres",}))
+                setCredencialesError((preveState) => ({...preveState,passwordError: "Debes introducir mínimio 8 caracteres"}))
+                setIsPasswordValid(false);
             } else {
-                setCredencialesError((preveState) => ({...preveState,passwordError: "",}))
+                setCredencialesError((preveState) => ({...preveState,passwordError: ""}))
+                setIsPasswordValid(true);
             }
             break;
     }
   };
   useEffect(()=>{
-    console.log("Credenciales ahora vale...", credenciales);
+    console.log("Credenciales vale : ", credenciales);
 }, [credenciales]);
 
   return (
@@ -59,8 +67,7 @@ export const Login = () => {
         validateFunction={(e) => inputValidate(e)}
       />
       <div>{credencialesError.passwordError}</div>
-    <div className="buttonDesign" /*onClick={() => loginFunction}*/>Login</div>
-
+      <div className={(isEmailValid && isPasswordValid) ? "buttonOn" : "buttonOff" } /*onClick={() => loginFunction}*/>Login</div>
     </div>
   );
 };

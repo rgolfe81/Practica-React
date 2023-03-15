@@ -18,7 +18,7 @@
     align-items: center;
 }
 
-.buttonDesign{
+.buttonOn{
     width: 5em;
     height: 2em;
     margin-top: 2em;
@@ -32,7 +32,20 @@
     transition: 0.3s;
 }
 
-.buttonDesign:hover{
+.buttonOn:hover{
     background-color:  rgb(66, 52, 154);
     transition: 0.3s;
+}
+
+.buttonOff{
+    width: 5em;
+    height: 2em;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  rgb(156, 151, 192);
+    color: white;
+    border-radius: 0.3em;
+
 }
